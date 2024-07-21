@@ -87,7 +87,7 @@ export default function Game() {
         <>
             <header className="border-outline h-[150px] rounded-2xl p-5 border-[3px]">
                 <nav className="flex flex-row items-center justify-between h-full">
-                    <img src="/src/assets/images/logo.svg" alt="Logo" />
+                    <img src="/images/logo.svg" alt="Logo" />
                     <div className="bg-white rounded-md p-2 h-full w-32 text-center flex flex-col justify-center">
                         <p className="text-score-text text-sm">Score</p>
                         <h1 className="text-dark-text leading-[.9] text-[3.5rem] font-bold p-0 m-0">{score}</h1>
@@ -96,20 +96,20 @@ export default function Game() {
             </header>
             <section ref={choicesRef} id='game' className="">
                 <div className='game-container relative'>
-                    <img src="/src/assets/images/bg-triangle.svg" className="absolute translate-y-[10%] -z-10" alt="Background" />
+                    <img src="/images/bg-triangle.svg" className="absolute translate-y-[10%] -z-10" alt="Background" />
                     <button data-choice="paper" className="choice paper">
                         <div>
-                            <img src="/src/assets/images/icon-paper.svg" alt="Paper" />
+                            <img src="/images/icon-paper.svg" alt="Paper" />
                         </div>
                     </button>
                     <button data-choice="scissors" className="choice scissors">
                         <div>
-                            <img src="/src/assets/images/icon-scissors.svg" alt="Scissors" />
+                            <img src="/images/icon-scissors.svg" alt="Scissors" />
                         </div>
                     </button>
                     <button data-choice="rock" className="choice rock">
                         <div>
-                            <img src="/src/assets/images/icon-rock.svg" alt="Rock" />
+                            <img src="/images/icon-rock.svg" alt="Rock" />
                         </div>
                     </button>
                 </div>
@@ -119,7 +119,7 @@ export default function Game() {
                 {user && (
                     <button data-choice={user} className={`pageChoice user ${user}`}>
                         <div>
-                            <img src={`/src/assets/images/icon-${user}.svg`} alt={user} />
+                            <img src={`/images/icon-${user}.svg`} alt={user} />
                         </div>
                     </button>
                 )}
@@ -132,7 +132,7 @@ export default function Game() {
                 {bot && (
                     <button data-choice={bot} className={`pageChoice bot ${bot}`}>
                         <div>
-                            <img src={`/src/assets/images/icon-${bot}.svg`} alt={bot} />
+                            <img src={`/images/icon-${bot}.svg`} alt={bot} />
                         </div>
                     </button>
                 )}
