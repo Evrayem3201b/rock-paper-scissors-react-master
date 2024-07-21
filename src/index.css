@@ -1,0 +1,192 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+@font-face {
+    font-family: 'barlow';
+    src: url("/fonts/barlow/BarlowSemiCondensed-Regular.ttf");
+    font-weight: 400;
+}
+@font-face {
+    font-family: 'barlow';
+    src: url("/fonts/barlow/BarlowSemiCondensed-SemiBold.ttf");
+    font-weight: 600;
+}
+@font-face {
+    font-family: 'barlow';
+    src: url("/fonts/barlow/BarlowSemiCondensed-Bold.ttf");
+    font-weight: 700;
+}
+
+:root{
+    --light-text: #fff;
+    --dark-text: hsl(229, 25%, 31%);
+    --score-text: hsl(229, 64%, 46%);
+    --outline: hsl(217, 16%, 45%);
+    --bg-grade-1: hsl(214, 47%, 23%);
+    --bg-grade-2: hsl(237, 49%, 15%);
+    --scissors-1: hsl(39, 89%, 49%);
+    --scissors-2: hsl(40, 84%, 53%);
+    --paper-1: hsl(230, 89%, 62%);
+    --paper-2: hsl(230, 89%, 65%);
+    --rock-1: hsl(349, 71%, 52%);
+    --rock-2: hsl(349, 70%, 56%);
+    --shadow-ring: rgba(0, 0, 0, 0.149);
+    --shadow-ring-md: #0000004d;
+}
+
+body{
+    color: #fff;
+    font-family: "barlow";
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.game-container{
+    display: grid;
+    grid-template-areas: 
+        "paper scissors"
+        "rock rock"
+    ;
+    padding-top: 3rem;
+    row-gap: 7rem;
+    column-gap: 2rem;
+    place-items: center;
+}
+.choice{
+    background-color: #fff;
+    border-radius: 50%;
+    width: 130px;
+    height: 130px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    box-shadow: inset 0px 6px 0px 0rem var(--shadow-ring);
+    user-select: none;
+    outline: none;
+    border: none;
+    transition: all 150ms cubic-bezier(0.63, -0.03, 0.2, 1);
+}
+.choice img{
+    transform: scale(1.3);
+}
+.choice::before, .choice::after{
+    position: absolute;
+    content: "";
+    border-radius: 50%;
+    width: 165px;
+    height: 165px;
+    z-index: -1;
+}
+.choice:active{
+    box-shadow: 0px 2px 0px 5rem #ffffff0d, 0px 2px 0px 3.5rem #ffffff1a, inset 0px 6px 0px 0rem var(--shadow-ring);
+    border-radius: 50%;
+    
+}
+.choice.paper{
+    grid-area: paper;
+}
+.choice.scissors{
+    grid-area: scissors;
+}
+.choice.rock{
+    grid-area: rock;
+}
+
+.choice.paper::before{
+    background: linear-gradient(var(--paper-1), var(--paper-2));
+    box-shadow: 0px .4rem 0px 0px var(--shadow-ring-md), 0px .4rem 0px 0 var(--paper-2);
+}
+.choice.scissors::before{
+    background: linear-gradient(var(--scissors-1), var(--scissors-2));
+    box-shadow: 0px .4rem 0px 0px var(--shadow-ring-md), 0px .4rem 0px 0 var(--scissors-2);
+}
+.choice.rock::before{
+    background: linear-gradient(var(--rock-1), var(--rock-2));
+    box-shadow: 0px .4rem 0px 0px var(--shadow-ring-md), 0px .4rem 0px 0 var(--rock-2);
+}
+
+.playing-page{
+    display: grid;
+    place-items: center;
+    grid-template-areas: 
+        "playerPicked botPicked"
+        "player bot";
+}
+.playing-page.message{
+    grid-template-areas: 
+        "playerPicked . botPicked"
+        "player message bot";
+    max-width: 1000px;
+}
+.playing-page .pageChoice.user{
+    grid-area: player;
+    cursor: default;
+}
+
+
+.pageChoice{
+    background-color: #fff;
+    border-radius: 50%;
+    width: 130px;
+    height: 130px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    box-shadow: inset 0px 6px 0px 0rem var(--shadow-ring);
+    user-select: none;
+    outline: none;
+    border: none;
+    transition: all 150ms cubic-bezier(0.63, -0.03, 0.2, 1);
+    cursor: default;
+}
+.pageChoice img{
+    transform: scale(1.3);
+}
+.pageChoice::before, .botChoice::after{
+    position: absolute;
+    content: "";
+    border-radius: 50%;
+    width: 165px;
+    height: 165px;
+    z-index: -1;
+}
+.pageChoice.paper::before{
+    background: linear-gradient(var(--paper-1), var(--paper-2));
+    box-shadow: 0px .4rem 0px 0px var(--shadow-ring-md), 0px .4rem 0px 0 var(--paper-2);
+}
+.pageChoice.scissors::before{
+    background: linear-gradient(var(--scissors-1), var(--scissors-2));
+    box-shadow: 0px .4rem 0px 0px var(--shadow-ring-md), 0px .4rem 0px 0 var(--scissors-2);
+}
+.pageChoice.rock::before{
+    background: linear-gradient(var(--rock-1), var(--rock-2));
+    box-shadow: 0px .4rem 0px 0px var(--shadow-ring-md), 0px .4rem 0px 0 var(--rock-2);
+}
+.playing-page .pageChoice.bot{
+    grid-area: bot;
+}
+
+.user-pick{
+    grid-area: playerPicked;
+    padding-bottom: 2rem;
+}
+.bot-pick{
+    grid-area: botPicked;
+    padding-bottom: 2rem;
+}
+.bot-shadow{
+    grid-area: bot;
+    padding-bottom: 2rem;
+}
+.result{
+    grid-area: message;
+    text-align: center;
+}
